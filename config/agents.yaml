@@ -1,0 +1,115 @@
+agents:
+  intake_routing_agent:
+    name: Intake & Routing Agent
+    role: Converts raw requests into structured task packets and selects workflow route.
+    owns:
+      - request classification
+      - priority assignment
+      - risk triage
+      - missing input detection
+      - workflow routing
+    output_schema: task_packet
+    next_agents:
+      - data_synthesis_agent
+      - decision_making_agent
+      - content_outreach_agent
+      - compliance_quality_agent
+
+  data_synthesis_agent:
+    name: Data Synthesis Agent
+    role: Turns messy source material into structured facts, insights, assumptions, and evidence gaps.
+    owns:
+      - fact extraction
+      - entity extraction
+      - contradiction detection
+      - source-aware summaries
+      - confidence scoring
+    output_schema: synthesis_brief
+    next_agents:
+      - decision_making_agent
+      - content_outreach_agent
+      - compliance_quality_agent
+
+  decision_making_agent:
+    name: Decision-Making Agent
+    role: Produces recommendations, tradeoff analysis, and decision records.
+    owns:
+      - option scoring
+      - recommendation logic
+      - risk analysis
+      - mitigation planning
+      - next action selection
+    output_schema: decision_record
+    next_agents:
+      - content_outreach_agent
+      - compliance_quality_agent
+
+  content_outreach_agent:
+    name: Content & Outreach Agent
+    role: Creates customer-facing and internal communication assets from approved context.
+    owns:
+      - emails
+      - posts
+      - proposals
+      - scripts
+      - summaries
+      - outreach sequences
+    output_schema: content_package
+    next_agents:
+      - compliance_quality_agent
+
+  compliance_quality_agent:
+    name: Compliance & Quality Agent
+    role: Final gate for accuracy, privacy, security, tone, completeness, and delivery readiness.
+    owns:
+      - hallucination checks
+      - policy checks
+      - PII checks
+      - security checks
+      - final approval
+      - revision instructions
+    output_schema: quality_gate_report
+    next_agents:
+      - human_review
+      - delivery
+
+routing_rules:
+  content_generation:
+    route:
+      - intake_routing_agent
+      - data_synthesis_agent
+      - content_outreach_agent
+      - compliance_quality_agent
+  decision_support:
+    route:
+      - intake_routing_agent
+      - data_synthesis_agent
+      - decision_making_agent
+      - compliance_quality_agent
+  research:
+    route:
+      - intake_routing_agent
+      - data_synthesis_agent
+      - decision_making_agent
+  compliance_review:
+    route:
+      - intake_routing_agent
+      - compliance_quality_agent
+  technical_implementation:
+    route:
+      - intake_routing_agent
+      - data_synthesis_agent
+      - decision_making_agent
+      - compliance_quality_agent
+
+risk_escalation:
+  human_review_required_if:
+    - legal_advice
+    - medical_advice
+    - financial_advice
+    - HR_decision
+    - regulated_security
+    - secrets_or_credentials
+    - payment_data
+    - PII_exposure
+    - high_reputational_risk

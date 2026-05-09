@@ -1,0 +1,27 @@
+{
+  "request_id": "REQ-001",
+  "original_request": "Create a warm outreach email for a prospect who asked about CRM automation.",
+  "objective": "Draft a consultative outreach email that invites a discovery call about CRM automation.",
+  "work_type": [
+    "lead_intake",
+    "content_generation"
+  ],
+  "priority": "normal",
+  "risk_level": "medium",
+  "missing_inputs": [
+    "lead_name",
+    "company_name",
+    "sender_name"
+  ],
+  "route": [
+    "data_synthesis_agent",
+    "content_outreach_agent",
+    "compliance_quality_agent"
+  ],
+  "human_review_required": false,
+  "routing_reason": "The request needs light synthesis, content generation, and QA before delivery.",
+  "metadata": {
+    "source": "website_form",
+    "channel": "email"
+  }
+}

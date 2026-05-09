@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/task_packet.schema.json",
+  "title": "TaskPacket",
+  "type": "object",
+  "required": [
+    "request_id",
+    "original_request",
+    "objective",
+    "work_type",
+    "priority",
+    "risk_level",
+    "route",
+    "human_review_required"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string"
+    },
+    "original_request": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string"
+    },
+    "work_type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "normal",
+        "high",
+        "urgent"
+      ]
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "missing_inputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "route": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_review_required": {
+      "type": "boolean"
+    },
+    "routing_reason": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}
