@@ -1,0 +1,3 @@
+# Disable auto title injection
+titles_from_headings:
+  enabled: false
