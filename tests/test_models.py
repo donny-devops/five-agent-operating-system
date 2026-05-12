@@ -1,10 +1,6 @@
 """Tests for src/multi_agent_os/models.py."""
 from __future__ import annotations
 
-from dataclasses import asdict
-
-import pytest
-
 from src.multi_agent_os.models import (
     SCHEMA_VERSION,
     AgentOutput,
@@ -18,12 +14,12 @@ from src.multi_agent_os.models import (
 # ---------------------------------------------------------------------------
 class TestTaskPacket:
     def _make(self, **kwargs) -> TaskPacket:  # type: ignore[no-untyped-def]
-        defaults = dict(
-            request_id="REQ-TEST",
-            original_request="Test request",
-            objective="Test objective",
-            work_type=["research"],
-        )
+        defaults = {
+            "request_id": "REQ-TEST",
+            "original_request": "Test request",
+            "objective": "Test objective",
+            "work_type": ["research"],
+        }
         return TaskPacket(**{**defaults, **kwargs})
 
     def test_defaults(self) -> None:
@@ -65,12 +61,12 @@ class TestTaskPacket:
 # ---------------------------------------------------------------------------
 class TestAgentOutput:
     def _make(self, **kwargs) -> AgentOutput:  # type: ignore[no-untyped-def]
-        defaults = dict(
-            request_id="REQ-TEST",
-            agent_name="data_synthesis_agent",
-            status="success",
-            output={"summary": "ok"},
-        )
+        defaults = {
+            "request_id": "REQ-TEST",
+            "agent_name": "data_synthesis_agent",
+            "status": "success",
+            "output": {"summary": "ok"},
+        }
         return AgentOutput(**{**defaults, **kwargs})
 
     def test_defaults(self) -> None:
