@@ -5,7 +5,8 @@ import functools
 import json
 import logging
 import time
-from typing import Any, Callable, TypeVar
+from collections.abc import Callable
+from typing import Any, TypeVar
 
 from .models import AgentOutput, TaskPacket, generate_request_id
 from .router import create_task_packet
@@ -226,11 +227,7 @@ def run_compliance_quality(task: TaskPacket, context: dict[str, Any]) -> AgentOu
 # Async workflow runner
 # ---------------------------------------------------------------------------
 async def run_workflow_async(user_request: str) -> dict[str, Any]:
-    """Run the five-agent pipeline asynchronously.
-
-    Agents that don't depend on each other's outputs can be awaited concurrently
-    in future iterations; for now the pipeline is sequential by design.
-    """
+    """Run the five-agent pipeline asynchronously."""
     request_id = generate_request_id()
     task = create_task_packet(request_id, user_request, metadata={"source": "local_demo"})
     context: dict[str, Any] = {"task_packet": task.to_dict(), "agent_outputs": []}
