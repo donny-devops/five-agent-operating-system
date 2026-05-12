@@ -1,8 +1,6 @@
 """Tests for src/multi_agent_os/router.py."""
 from __future__ import annotations
 
-import pytest
-
 from src.multi_agent_os.router import (
     build_route,
     create_task_packet,
