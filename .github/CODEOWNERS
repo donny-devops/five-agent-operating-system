@@ -1,0 +1,22 @@
+# CODEOWNERS
+# Owners are automatically requested for review when pull requests change owned paths.
+
+# Default owner
+* @donny-devops
+
+# CI/CD and repository policy
+.github/ @donny-devops
+.github/workflows/ @donny-devops
+.github/dependabot.yml @donny-devops
+
+# Agent contracts, schemas, and runtime logic
+agents/ @donny-devops
+schemas/ @donny-devops
+config/ @donny-devops
+src/ @donny-devops
+tests/ @donny-devops
+
+# Security-sensitive docs and governance
+SECURITY.md @donny-devops
+CONTRIBUTING.md @donny-devops
+README.md @donny-devops
