@@ -155,27 +155,56 @@ def apply_guardrails(text: str, policies: list[PolicyRule] | None = None) -> Gua
     return GuardrailResult(allowed=allowed, triggered=triggered)
 
 
+def _required_contract_keys(agent_name: str) -> tuple[str, ...]:
+    contract_keys: dict[str, tuple[str, ...]] = {
+        "data_synthesis_agent": (
+            "summary",
+            "key_facts",
+            "entities",
+            "success_criteria",
+            "constraints",
+            "contradictions",
+            "assumptions",
+            "confidence",
+            "recommended_next_agent",
+        ),
+        "decision_making_agent": (
+            "decision",
+            "options",
+            "recommended_option",
+            "rationale",
+            "risks",
+            "mitigations",
+            "human_approval_required",
+            "next_agent",
+        ),
+        "content_outreach_agent": (
+            "content_type",
+            "audience",
+            "subject_lines",
+            "primary_draft",
+            "alternate_drafts",
+            "claims_requiring_verification",
+            "placeholders",
+            "next_agent",
+        ),
+        "compliance_quality_agent": (
+            "status",
+            "overall_score",
+            "checks",
+            "issues",
+            "approved_for_delivery",
+            "human_review_required",
+            "revision_instructions",
+        ),
+    }
+    return contract_keys.get(agent_name, ())
+
+
 def validate_agent_contract(agent_name: str, output: dict[str, Any]) -> list[str]:
-    errors: list[str] = []
     if not isinstance(output, dict):
         return [f"{agent_name}: output must be an object"]
-    if agent_name == "data_synthesis_agent":
-        for key in ("summary", "key_facts", "confidence", "recommended_next_agent"):
-            if key not in output:
-                errors.append(f"{agent_name}: missing {key}")
-    elif agent_name == "decision_making_agent":
-        for key in ("decision", "options", "recommended_option", "human_approval_required"):
-            if key not in output:
-                errors.append(f"{agent_name}: missing {key}")
-    elif agent_name == "content_outreach_agent":
-        for key in ("content_type", "primary_draft", "claims_requiring_verification", "next_agent"):
-            if key not in output:
-                errors.append(f"{agent_name}: missing {key}")
-    elif agent_name == "compliance_quality_agent":
-        for key in ("status", "checks", "issues", "approved_for_delivery"):
-            if key not in output:
-                errors.append(f"{agent_name}: missing {key}")
-    return errors
+    return [f"{agent_name}: missing {key}" for key in _required_contract_keys(agent_name) if key not in output]
 
 
 def score_telemetry(agent_name: str, output: dict[str, Any], guardrail: GuardrailResult) -> dict[str, Any]:
