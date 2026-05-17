@@ -1,6 +1,6 @@
 # Five-Agent Operating System
 
-[![CI](https://github.com/donny-devops/five-agent-operating-system/actions/workflows/ci.yml/badge.svg)](https://github.com/donny-devops/five-agent-operating-system/actions/workflows/ci.yml)
+[![CI](https://github.com/donny-devops/five-agent-os/actions/workflows/ci.yml/badge.svg)](https://github.com/donny-devops/five-agent-os/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
@@ -57,8 +57,8 @@ graph TD
 
 ```bash
 # 1. Clone
-git clone https://github.com/donny-devops/five-agent-operating-system.git
-cd five-agent-operating-system
+git clone https://github.com/donny-devops/five-agent-os.git
+cd five-agent-os
 
 # 2. Create and activate a virtual environment
 python -m venv .venv
@@ -111,7 +111,7 @@ pytest tests/ -v
 ## Project Structure
 
 ```
-five-agent-operating-system/
+five-agent-os/
 ├── .github/workflows/ci.yml       # CI: ruff + pytest on Python 3.11/3.12
 ├── agents/                         # Agent markdown specs
 ├── config/agents.yaml              # Agent configuration
