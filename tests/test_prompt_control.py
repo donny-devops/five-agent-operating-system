@@ -43,6 +43,7 @@ def test_contract_validation() -> None:
         },
     )
     assert "content_outreach_agent: missing audience" in errors
+    assert "content_outreach_agent: missing subject_lines" in errors
 
 
 def test_telemetry_scoring() -> None:
@@ -73,7 +74,7 @@ def test_eval_harness() -> None:
 
 
 def test_sensitive_field_scrubbing() -> None:
-    payload = {"api_key": "secret-value", "nested": {"password": "abc123"}}
+    payload = {"api_key": "example-value", "nested": {"password": "example-value"}}
     scrubbed = scrub_sensitive_fields(payload)
     assert scrubbed["api_key"] == "[REDACTED]"
     assert scrubbed["nested"]["password"] == "[REDACTED]"
