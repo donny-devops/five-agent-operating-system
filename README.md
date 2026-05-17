@@ -147,8 +147,9 @@ five-agent-os/
 - [ ] Replace keyword router with a model-based classifier (`confidence_score < 0.8` routes should escalate)
 - [ ] Swap `asyncio.get_event_loop().run_in_executor` for a proper `asyncio.TaskGroup` when agents can run concurrently
 - [ ] Add OpenTelemetry spans around `_timed_agent()`
-- [ ] Connect `AgentOutput` to a persistent store (Postgres, S3, etc.) keyed by `request_id`
+- [ ] Connect `AgentOutput` to a persistent store (PostgreSQL, Supabase Postgres, or S3) keyed by `request_id`
 - [ ] Add a dead-letter queue for agents that exceed `max_attempts` in the retry decorator
+- [ ] Add environment-specific policy checks before enabling cloud or database integrations
 
 ---
 
