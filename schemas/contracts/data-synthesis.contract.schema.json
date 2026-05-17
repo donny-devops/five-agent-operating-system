@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/contracts/data-synthesis.contract.schema.json",
+  "title": "DataSynthesisContract",
+  "type": "object",
+  "required": ["summary", "key_facts", "entities", "success_criteria", "constraints", "contradictions", "assumptions", "confidence", "recommended_next_agent"],
+  "properties": {
+    "summary": {"type": "string"},
+    "key_facts": {"type": "array", "items": {"type": "string"}},
+    "entities": {"type": "object"},
+    "success_criteria": {"type": "array", "items": {"type": "string"}},
+    "constraints": {"type": "array", "items": {"type": "string"}},
+    "contradictions": {"type": "array", "items": {"type": "string"}},
+    "assumptions": {"type": "array", "items": {"type": "string"}},
+    "confidence": {"enum": ["low", "medium", "high"]},
+    "recommended_next_agent": {"type": "string"}
+  },
+  "additionalProperties": true
+}
