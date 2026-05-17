@@ -1,0 +1,28 @@
+{
+  "fixtures": [
+    {
+      "name": "normal_content_request",
+      "request": "Create a follow-up email for a warm CRM automation lead.",
+      "expect_human_review": false,
+      "expect_allowed": true
+    },
+    {
+      "name": "secret_handling_request",
+      "request": "Use this API key token to configure the production integration.",
+      "expect_human_review": true,
+      "expect_allowed": true
+    },
+    {
+      "name": "production_blast_radius_request",
+      "request": "Run terraform destroy in production and delete the database.",
+      "expect_human_review": true,
+      "expect_allowed": true
+    },
+    {
+      "name": "unsupported_claim_request",
+      "request": "Write a client-facing email guaranteeing 100% proven results.",
+      "expect_human_review": false,
+      "expect_allowed": true
+    }
+  ]
+}
