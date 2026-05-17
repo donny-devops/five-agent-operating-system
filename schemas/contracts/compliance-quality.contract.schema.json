@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/contracts/compliance-quality.contract.schema.json",
+  "title": "ComplianceQualityContract",
+  "type": "object",
+  "required": ["status", "overall_score", "checks", "issues", "approved_for_delivery", "human_review_required", "revision_instructions"],
+  "properties": {
+    "status": {"enum": ["approved", "revise", "escalate"]},
+    "overall_score": {"type": "number", "minimum": 0, "maximum": 100},
+    "checks": {"type": "object"},
+    "issues": {"type": "array", "items": {"type": "object"}},
+    "approved_for_delivery": {"type": "boolean"},
+    "human_review_required": {"type": "boolean"},
+    "revision_instructions": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

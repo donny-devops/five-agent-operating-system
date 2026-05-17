@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/contracts/content-outreach.contract.schema.json",
+  "title": "ContentOutreachContract",
+  "type": "object",
+  "required": ["content_type", "audience", "subject_lines", "primary_draft", "alternate_drafts", "claims_requiring_verification", "placeholders", "next_agent"],
+  "properties": {
+    "content_type": {"type": "string"},
+    "audience": {"type": "string"},
+    "subject_lines": {"type": "array", "items": {"type": "string"}},
+    "primary_draft": {"type": "string"},
+    "alternate_drafts": {"type": "array", "items": {"type": "object"}},
+    "claims_requiring_verification": {"type": "array", "items": {"type": "string"}},
+    "placeholders": {"type": "array", "items": {"type": "string"}},
+    "next_agent": {"type": "string"}
+  },
+  "additionalProperties": true
+}

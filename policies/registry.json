@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "rules": [
+    {
+      "policy_id": "policy.security.secrets",
+      "name": "Secret or credential exposure",
+      "severity": "critical",
+      "patterns": ["api[_-]?key", "password", "secret", "token", "credential"],
+      "action": "escalate",
+      "message": "Potential secret or credential handling detected. Require human review and redaction."
+    },
+    {
+      "policy_id": "policy.privacy.pii",
+      "name": "Personal data exposure",
+      "severity": "high",
+      "patterns": ["ssn", "social security", "date of birth", "passport", "driver.?license"],
+      "action": "escalate",
+      "message": "Potential sensitive personal data detected. Verify authorization and minimize exposure."
+    },
+    {
+      "policy_id": "policy.safety.high_risk",
+      "name": "High-risk or regulated request",
+      "severity": "high",
+      "patterns": ["legal advice", "medical advice", "investment advice", "malware", "exploit", "bypass", "disable logging"],
+      "action": "escalate",
+      "message": "High-risk or regulated request detected. Require human review before execution or delivery."
+    },
+    {
+      "policy_id": "policy.truth.claims",
+      "name": "Unsupported external claim",
+      "severity": "medium",
+      "patterns": ["guarantee", "proven results", "100%", "case study", "testimonial"],
+      "action": "warn",
+      "message": "Potential unsupported claim detected. Verify evidence or rewrite conservatively."
+    },
+    {
+      "policy_id": "policy.delivery.external_review",
+      "name": "External delivery gate",
+      "severity": "medium",
+      "patterns": ["send to customer", "publish", "external", "client-facing"],
+      "action": "warn",
+      "message": "External delivery requires compliance and quality review before release."
+    },
+    {
+      "policy_id": "policy.risk.blast_radius",
+      "name": "Operational blast radius",
+      "severity": "high",
+      "patterns": ["production", "delete", "drop database", "terraform destroy", "rotate keys"],
+      "action": "escalate",
+      "message": "Operationally risky action detected. Require rollback plan and approval."
+    },
+    {
+      "policy_id": "policy.truth.provenance",
+      "name": "Evidence and provenance required",
+      "severity": "medium",
+      "patterns": ["latest", "most recent", "source", "research", "benchmark"],
+      "action": "warn",
+      "message": "Evidence-sensitive request detected. Preserve sources and confidence level."
+    }
+  ]
+}

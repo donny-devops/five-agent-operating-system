@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/contracts/intake-routing.contract.schema.json",
+  "title": "IntakeRoutingContract",
+  "type": "object",
+  "required": ["request_id", "objective", "work_type", "priority", "risk_level", "missing_inputs", "route", "human_review_required", "routing_reason", "confidence_score"],
+  "properties": {
+    "request_id": {"type": "string"},
+    "objective": {"type": "string"},
+    "work_type": {"type": "array", "items": {"type": "string"}},
+    "priority": {"enum": ["low", "normal", "high", "urgent"]},
+    "risk_level": {"enum": ["low", "medium", "high", "critical"]},
+    "missing_inputs": {"type": "array", "items": {"type": "string"}},
+    "route": {"type": "array", "items": {"type": "string"}},
+    "human_review_required": {"type": "boolean"},
+    "routing_reason": {"type": "string"},
+    "confidence_score": {"type": "number", "minimum": 0, "maximum": 1}
+  },
+  "additionalProperties": true
+}
