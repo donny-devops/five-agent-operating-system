@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/contracts/decision-making.contract.schema.json",
+  "title": "DecisionMakingContract",
+  "type": "object",
+  "required": ["decision", "options", "recommended_option", "rationale", "risks", "mitigations", "human_approval_required", "next_agent"],
+  "properties": {
+    "decision": {"type": "string"},
+    "options": {"type": "array", "items": {"type": "object"}},
+    "recommended_option": {"type": "string"},
+    "rationale": {"type": "string"},
+    "risks": {"type": "array", "items": {"type": "string"}},
+    "mitigations": {"type": "array", "items": {"type": "string"}},
+    "human_approval_required": {"type": "boolean"},
+    "next_agent": {"type": "string"}
+  },
+  "additionalProperties": true
+}
