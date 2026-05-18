@@ -1,0 +1,426 @@
+# Instincts generated from https://github.com/donny-devops/five-agent-os
+# Generated: 2026-05-17T17:12:25.505Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: five-agent-os-commit-conventional
+trigger: "when writing a commit message"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: https://github.com/donny-devops/five-agent-os
+---
+
+# Five Agent Os Commit Conventional
+
+## Action
+
+Use conventional commit format with prefixes: feat, test
+
+## Evidence
+
+- 14 commits analyzed
+- Detected conventional commit pattern
+- Examples: feat(prompt-control): add manifests contracts policies guardrails telemetry and eval harness, test(prompt-control): add manifest guardrail telemetry and eval tests
+
+---
+id: five-agent-os-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/donny-devops/five-agent-os
+---
+
+# Five Agent Os Commit Length
+
+## Action
+
+Write moderate-length commit messages (~59 characters)
+
+## Evidence
+
+- Average commit message length: 59 chars
+- Based on 14 commits
+
+---
+id: five-agent-os-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/donny-devops/five-agent-os
+---
+
+# Five Agent Os Naming Files
+
+## Action
+
+Use kebab-case naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: kebab-case
+
+---
+id: five-agent-os-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/donny-devops/five-agent-os
+---
+
+# Five Agent Os Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: five-agent-os-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/donny-devops/five-agent-os
+---
+
+# Five Agent Os Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: five-agent-os-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/donny-devops/five-agent-os
+---
+
+# Five Agent Os Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: five-agent-os-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/donny-devops/five-agent-os
+---
+
+# Five Agent Os Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~30x per month
+- Files: **/*.test.*
+
+---
+id: five-agent-os-workflow-add-new-agent-type
+trigger: "when doing add new agent type"
+confidence: 0.7
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/donny-devops/five-agent-os
+---
+
+# Five Agent Os Workflow Add New Agent Type
+
+## Action
+
+Follow the add-new-agent-type workflow:
+1. Create a new YAML prompt manifest in prompts/agents/
+2. Create a new JSON schema contract in schemas/contracts/
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~4x per month
+- Files: prompts/agents/*.yaml, schemas/contracts/*.contract.schema.json
+
+---
+id: five-agent-os-instinct-file-naming
+trigger: "When creating a new file in the codebase"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct File Naming
+
+## Action
+
+Name the file using kebab-case (e.g., my-new-file.py)
+
+## Evidence
+
+- Pattern in namingConventions.files: kebab-case
+
+---
+id: five-agent-os-instinct-function-naming
+trigger: "When defining a new function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Function Naming
+
+## Action
+
+Use camelCase for the function name
+
+## Evidence
+
+- Pattern in namingConventions.functions: camelCase
+
+---
+id: five-agent-os-instinct-class-naming
+trigger: "When defining a new class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Class Naming
+
+## Action
+
+Use PascalCase for the class name
+
+## Evidence
+
+- Pattern in namingConventions.classes: PascalCase
+
+---
+id: five-agent-os-instinct-constant-naming
+trigger: "When defining a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Constant Naming
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for the constant name
+
+## Evidence
+
+- Pattern in namingConventions.constants: SCREAMING_SNAKE_CASE
+
+---
+id: five-agent-os-instinct-import-style
+trigger: "When importing modules within the codebase"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Import Style
+
+## Action
+
+Use relative imports
+
+## Evidence
+
+- Pattern in importStyle: relative
+
+---
+id: five-agent-os-instinct-export-style
+trigger: "When exporting functions or classes from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Export Style
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in exportStyle: named
+
+---
+id: five-agent-os-instinct-test-location
+trigger: "When writing tests for code in the repository"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Test Location
+
+## Action
+
+Place test files in the separate 'tests' folder
+
+## Evidence
+
+- testLocation: separate
+- commonFolders: tests
+
+---
+id: five-agent-os-instinct-test-naming
+trigger: "When naming a test file"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Test Naming
+
+## Action
+
+Include '.test.' in the filename (e.g., my-feature.test.py)
+
+## Evidence
+
+- filesInvolved in workflows: **/*.test.*
+
+---
+id: five-agent-os-instinct-feature-test-sequence
+trigger: "When implementing a new feature"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Feature Test Sequence
+
+## Action
+
+First add the feature implementation, then add tests for the feature
+
+## Evidence
+
+- feature-development workflow commitSequence: Add feature implementation, Add tests for feature
+
+---
+id: five-agent-os-instinct-git-commit-format
+trigger: "When making a git commit"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Git Commit Format
+
+## Action
+
+Use conventional commit format with a prefix (e.g., feat, test) and scope (e.g., feat(prompts): ...)
+
+## Evidence
+
+- commits.type: conventional
+- commits.prefixes: feat, test
+- Examples: feat(prompt-control): ...
+
+---
+id: five-agent-os-instinct-git-commit-length
+trigger: "When writing a commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Git Commit Length
+
+## Action
+
+Keep the commit message concise, around 59 characters on average
+
+## Evidence
+
+- commits.averageLength: 59
+
+---
+id: five-agent-os-instinct-feature-development-workflow
+trigger: "When developing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Feature Development Workflow
+
+## Action
+
+Follow the sequence: implement the feature, add tests, update documentation
+
+## Evidence
+
+- feature-development workflow commitSequence
+- Example commits: feat(prompt-control): ...
+
+---
+id: five-agent-os-instinct-add-agent-type-workflow
+trigger: "When introducing a new agent type"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: donny-devops/five-agent-os
+---
+
+# Five Agent Os Instinct Add Agent Type Workflow
+
+## Action
+
+Create a YAML prompt manifest in prompts/agents/ and a JSON schema contract in schemas/contracts/
+
+## Evidence
+
+- add-new-agent-type workflow
+- filesInvolved: prompts/agents/*.yaml, schemas/contracts/*.contract.schema.json
+
