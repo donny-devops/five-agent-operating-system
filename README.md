@@ -1,5 +1,9 @@
 # Five-Agent Operating System
 
+<p align="center">
+  <img src=".codex/IMG_1354.png" alt="Five-Agent-OS multi-agent runtime architecture logo" width="100%" />
+</p>
+
 [![CI](https://github.com/donny-devops/five-agent-os/actions/workflows/ci.yml/badge.svg)](https://github.com/donny-devops/five-agent-os/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
