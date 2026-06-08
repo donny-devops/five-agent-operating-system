@@ -153,7 +153,9 @@ def run_decision_making(task: TaskPacket, context: dict[str, Any]) -> AgentOutpu
         "risks": ["Output may require personalization before final use."],
         "mitigations": ["Run the Compliance & Quality Agent before delivery."],
         "human_approval_required": task.human_review_required,
-        "next_agent": "content_outreach_agent" if "content_outreach_agent" in task.route else "compliance_quality_agent",
+        "next_agent": "content_outreach_agent"
+        if "content_outreach_agent" in task.route
+        else "compliance_quality_agent",
     }
     return AgentOutput(task.request_id, "decision_making_agent", "success", output, "medium")
 
@@ -184,21 +186,25 @@ def run_compliance_quality(task: TaskPacket, context: dict[str, Any]) -> AgentOu
     approved = not task.human_review_required
 
     if task.human_review_required:
-        issues.append({
-            "severity": "high",
-            "category": "human_review_required",
-            "description": "The request contains high-risk terms or regulated content indicators.",
-            "fix": "Route to a human reviewer before delivery.",
-        })
+        issues.append(
+            {
+                "severity": "high",
+                "category": "human_review_required",
+                "description": "The request contains high-risk terms or regulated content indicators.",
+                "fix": "Route to a human reviewer before delivery.",
+            }
+        )
 
     serialized_context = json.dumps(context)
     if "{{" in serialized_context and "}}" in serialized_context:
-        issues.append({
-            "severity": "medium",
-            "category": "unresolved_placeholder",
-            "description": "The output contains unresolved placeholders.",
-            "fix": "Replace placeholders before external delivery.",
-        })
+        issues.append(
+            {
+                "severity": "medium",
+                "category": "unresolved_placeholder",
+                "description": "The output contains unresolved placeholders.",
+                "fix": "Replace placeholders before external delivery.",
+            }
+        )
         approved = False
 
     status = "approved" if approved else ("escalate" if task.human_review_required else "revise")
@@ -258,9 +264,7 @@ async def run_workflow_async(user_request: str) -> dict[str, Any]:
         else:
             result = await asyncio.get_event_loop().run_in_executor(
                 None,
-                lambda _fn=fn, _name=agent_name: _timed_agent(
-                    _fn, agent_name=_name, request_id=request_id
-                ),
+                lambda _fn=fn, _name=agent_name: _timed_agent(_fn, agent_name=_name, request_id=request_id),
             )
         context["agent_outputs"].append(result.to_dict())
 
