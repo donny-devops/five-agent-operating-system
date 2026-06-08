@@ -1,4 +1,5 @@
 """Root conftest.py — add src/ to sys.path so tests can import src.multi_agent_os.*"""
+
 from __future__ import annotations
 
 import sys

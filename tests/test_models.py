@@ -1,4 +1,5 @@
 """Tests for src/multi_agent_os/models.py."""
+
 from __future__ import annotations
 
 from src.multi_agent_os.models import (
