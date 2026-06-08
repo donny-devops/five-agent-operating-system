@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import copy
 import json
 import re
 from dataclasses import dataclass, field
@@ -250,7 +249,6 @@ def evaluate_request(user_request: str) -> dict[str, Any]:
 
 
 def scrub_sensitive_fields(payload: dict[str, Any]) -> dict[str, Any]:
-    redacted = copy.deepcopy(payload)
     sensitive_keys = {"api_key", "password", "token", "secret", "credential"}
 
     def walk(value: Any) -> Any:
@@ -263,4 +261,4 @@ def scrub_sensitive_fields(payload: dict[str, Any]) -> dict[str, Any]:
             return [walk(item) for item in value]
         return value
 
-    return walk(redacted)
+    return walk(payload)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from typing import Any
 
@@ -70,7 +71,7 @@ def detect_work_types(text: str) -> list[str]:
     lowered = text.lower()
     found: list[str] = []
     for work_type, keywords in WORK_TYPE_KEYWORDS.items():
-        if any(keyword in lowered for keyword in keywords):
+        if any(re.search(rf"\b{re.escape(keyword)}\b", lowered) for keyword in keywords):
             found.append(work_type)
     return found or ["unknown"]
 
@@ -78,7 +79,7 @@ def detect_work_types(text: str) -> list[str]:
 def detect_risk(text: str) -> tuple[str, bool]:
     """Return (risk_level, human_review_required)."""
     lowered = text.lower()
-    if any(term in lowered for term in HIGH_RISK_TERMS):
+    if any(re.search(rf"\b{re.escape(term)}\b", lowered) for term in HIGH_RISK_TERMS):
         return "high", True
     return "medium", False
 
