@@ -9,7 +9,7 @@ Keywords: agents,multi-agent,ai,workflow,automation
 Requires-Python: >=3.11
 Description-Content-Type: text/markdown
 Provides-Extra: dev
-Requires-Dist: pytest<9.0,>=8.0; extra == "dev"
+Requires-Dist: pytest>=9.0.3; extra == "dev"
 Requires-Dist: ruff<1.0,>=0.9; extra == "dev"
 
 # Five-Agent Operating System
