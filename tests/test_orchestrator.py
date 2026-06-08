@@ -1,4 +1,5 @@
 """Tests for src/multi_agent_os/orchestrator.py."""
+
 from __future__ import annotations
 
 import pytest

@@ -39,9 +39,7 @@ class AgentOutput:
     output: dict[str, Any]
     confidence: Literal["low", "medium", "high"] = "medium"
     errors: list[str] = field(default_factory=list)
-    created_at: str = field(
-        default_factory=lambda: datetime.now(UTC).isoformat()
-    )
+    created_at: str = field(default_factory=lambda: datetime.now(UTC).isoformat())
     duration_ms: float = 0.0
 
     def to_dict(self) -> dict[str, Any]:
