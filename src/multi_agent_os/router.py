@@ -7,9 +7,25 @@ from typing import Any
 from .models import TaskPacket
 
 HIGH_RISK_TERMS = {
-    "legal", "lawsuit", "contract", "medical", "diagnosis", "therapy",
-    "investment", "tax", "financial advice", "fire", "hire", "termination",
-    "password", "api key", "secret", "payment", "credit card", "ssn", "pii"
+    "legal",
+    "lawsuit",
+    "contract",
+    "medical",
+    "diagnosis",
+    "therapy",
+    "investment",
+    "tax",
+    "financial advice",
+    "fire",
+    "hire",
+    "termination",
+    "password",
+    "api key",
+    "secret",
+    "payment",
+    "credit card",
+    "ssn",
+    "pii",
 }
 
 WORK_TYPE_KEYWORDS: dict[str, list[str]] = {
@@ -17,7 +33,16 @@ WORK_TYPE_KEYWORDS: dict[str, list[str]] = {
     "decision_support": ["decide", "choose", "recommend", "prioritize", "score", "rank"],
     "research": ["research", "summarize", "analyze", "findings", "report"],
     "data_analysis": ["data", "spreadsheet", "csv", "dashboard", "metrics", "kpi"],
-    "technical_implementation": ["build", "code", "api", "workflow", "integration", "repo", "deploy", "database"],
+    "technical_implementation": [
+        "build",
+        "code",
+        "api",
+        "workflow",
+        "integration",
+        "repo",
+        "deploy",
+        "database",
+    ],
     "compliance_review": ["compliance", "policy", "quality", "qa", "review", "risk"],
 }
 
