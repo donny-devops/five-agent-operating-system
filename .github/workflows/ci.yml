@@ -68,7 +68,7 @@ jobs:
   docker-smoke:
     name: Docker smoke build
     runs-on: ubuntu-latest
-    if: ${{ hashFiles('Dockerfile') != '' }}
+    if: hashFiles('Dockerfile') != ''
     steps:
       - name: Checkout
         uses: actions/checkout@v4
