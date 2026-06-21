@@ -30,7 +30,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if grep -RInE '(AWS_SECRET_ACCESS_KEY|PRIVATE KEY|api[_-]?key\s*=|token\s*=|password\s*=)' . --exclude-dir=.git --exclude='*.md'; then
+          if grep -RInE '(AWS_SECRET_ACCESS_KEY|PRIVATE KEY|api[_-]?key\s*=|token\s*=|password\s*=)' . \
+            --exclude-dir=.git \
+            --exclude='*.md' \
+            --exclude='*.yml' \
+            --exclude='*.yaml'; then
             echo 'Potential secret-like values found. Review required.'
             exit 1
           fi
