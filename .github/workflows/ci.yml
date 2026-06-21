@@ -68,9 +68,14 @@ jobs:
   docker-smoke:
     name: Docker smoke build
     runs-on: ubuntu-latest
-    if: hashFiles('Dockerfile') != ''
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build image
-        run: docker build -t repo-smoke:${{ github.sha }} .
+      - name: Build image if Dockerfile exists
+        shell: bash
+        run: |
+          if [ -f Dockerfile ]; then
+            docker build -t repo-smoke:${{ github.sha }} .
+          else
+            echo 'No Dockerfile found; skipping docker build.'
+          fi
