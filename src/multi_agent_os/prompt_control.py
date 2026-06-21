@@ -204,7 +204,9 @@ def _required_contract_keys(agent_name: str) -> tuple[str, ...]:
 def validate_agent_contract(agent_name: str, output: dict[str, Any]) -> list[str]:
     if not isinstance(output, dict):
         return [f"{agent_name}: output must be an object"]
-    return [f"{agent_name}: missing {key}" for key in _required_contract_keys(agent_name) if key not in output]
+    return [
+        f"{agent_name}: missing {key}" for key in _required_contract_keys(agent_name) if key not in output
+    ]
 
 
 def score_telemetry(agent_name: str, output: dict[str, Any], guardrail: GuardrailResult) -> dict[str, Any]:
@@ -253,7 +255,10 @@ def scrub_sensitive_fields(payload: dict[str, Any]) -> dict[str, Any]:
 
     def walk(value: Any) -> Any:
         if isinstance(value, dict):
-            return {key: "[REDACTED]" if key.lower() in sensitive_keys else walk(item) for key, item in value.items()}
+            return {
+                key: "[REDACTED]" if key.lower() in sensitive_keys else walk(item)
+                for key, item in value.items()
+            }
         if isinstance(value, list):
             return [walk(item) for item in value]
         return value
