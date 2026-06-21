@@ -2,7 +2,9 @@ name: CI
 
 on:
   push:
+    branches: [main]
   pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -19,13 +21,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Validate core files
         shell: bash
         run: |
           test -f README.md
           find . -maxdepth 3 -type f | sort | head -200
-
       - name: Lightweight secret pattern scan
         shell: bash
         run: |
@@ -45,13 +45,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
-
       - name: Install tooling and project dependencies
         shell: bash
         run: |
@@ -60,10 +58,8 @@ jobs:
           if [ -f pyproject.toml ]; then pip install -e . || true; fi
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
-
       - name: Ruff lint
         run: ruff check . --output-format=github
-
       - name: Run pytest if tests exist
         shell: bash
         run: |
