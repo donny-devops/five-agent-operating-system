@@ -1,3 +1,17 @@
+Metadata-Version: 2.4
+Name: five-agent-os
+Version: 1.1.0
+Summary: A practical multi-agent operating model for intake, synthesis, decisions, outreach, and quality control.
+Author: donny-devops
+License: MIT
+Project-URL: Repository, https://github.com/donny-devops/five-agent-os
+Keywords: agents,multi-agent,ai,workflow,automation
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Requires-Dist: pytest<9.0,>=8.0; extra == "dev"
+Requires-Dist: ruff<1.0,>=0.9; extra == "dev"
+
 # Five-Agent Operating System
 
 <p align="center">

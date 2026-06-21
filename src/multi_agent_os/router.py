@@ -1,14 +1,31 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from typing import Any
 
 from .models import TaskPacket
 
 HIGH_RISK_TERMS = {
-    "legal", "lawsuit", "contract", "medical", "diagnosis", "therapy",
-    "investment", "tax", "financial advice", "fire", "hire", "termination",
-    "password", "api key", "secret", "payment", "credit card", "ssn", "pii"
+    "legal",
+    "lawsuit",
+    "contract",
+    "medical",
+    "diagnosis",
+    "therapy",
+    "investment",
+    "tax",
+    "financial advice",
+    "fire",
+    "hire",
+    "termination",
+    "password",
+    "api key",
+    "secret",
+    "payment",
+    "credit card",
+    "ssn",
+    "pii",
 }
 
 WORK_TYPE_KEYWORDS: dict[str, list[str]] = {
@@ -16,7 +33,16 @@ WORK_TYPE_KEYWORDS: dict[str, list[str]] = {
     "decision_support": ["decide", "choose", "recommend", "prioritize", "score", "rank"],
     "research": ["research", "summarize", "analyze", "findings", "report"],
     "data_analysis": ["data", "spreadsheet", "csv", "dashboard", "metrics", "kpi"],
-    "technical_implementation": ["build", "code", "api", "workflow", "integration", "repo", "deploy", "database"],
+    "technical_implementation": [
+        "build",
+        "code",
+        "api",
+        "workflow",
+        "integration",
+        "repo",
+        "deploy",
+        "database",
+    ],
     "compliance_review": ["compliance", "policy", "quality", "qa", "review", "risk"],
 }
 
@@ -45,7 +71,7 @@ def detect_work_types(text: str) -> list[str]:
     lowered = text.lower()
     found: list[str] = []
     for work_type, keywords in WORK_TYPE_KEYWORDS.items():
-        if any(keyword in lowered for keyword in keywords):
+        if any(re.search(rf"\b{re.escape(keyword)}\b", lowered) for keyword in keywords):
             found.append(work_type)
     return found or ["unknown"]
 
@@ -53,7 +79,7 @@ def detect_work_types(text: str) -> list[str]:
 def detect_risk(text: str) -> tuple[str, bool]:
     """Return (risk_level, human_review_required)."""
     lowered = text.lower()
-    if any(term in lowered for term in HIGH_RISK_TERMS):
+    if any(re.search(rf"\b{re.escape(term)}\b", lowered) for term in HIGH_RISK_TERMS):
         return "high", True
     return "medium", False
 

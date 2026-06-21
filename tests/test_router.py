@@ -1,4 +1,5 @@
 """Tests for src/multi_agent_os/router.py."""
+
 from __future__ import annotations
 
 from src.multi_agent_os.router import (
@@ -49,6 +50,21 @@ class TestDetectWorkTypes:
         result = detect_work_types("Write an email and analyze the data")
         assert "content_generation" in result
         assert "data_analysis" in result
+
+    def test_no_false_positive_repo_in_report(self) -> None:
+        # "repo" keyword must not match the word "report"
+        result = detect_work_types("Summarize the findings from the report")
+        assert "technical_implementation" not in result
+
+    def test_no_false_positive_code_in_decode(self) -> None:
+        # "code" keyword must not match "decode"
+        result = detect_work_types("Please decode the message")
+        assert "technical_implementation" not in result
+
+    def test_no_false_positive_post_in_postage(self) -> None:
+        # "post" keyword must not match "postage"
+        result = detect_work_types("Calculate the postage cost")
+        assert "content_generation" not in result
 
 
 # ---------------------------------------------------------------------------
